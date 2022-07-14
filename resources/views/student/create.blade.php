@@ -9,14 +9,14 @@
   <form method="POST" action="{{ route('student.store')}}">
     @csrf
     <div class="card-body">
-    
+
       <div class="form-group">
         <label for="name">Name</label>
         <input type="name" class="form-control" name="name" placeholder="Enter Name">
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" name="email" placeholder="email" >
+        <input type="email" class="form-control" name="email" placeholder="email">
       </div>
       <div class="form-group">
         <label for="mobile">Mobile</label>
@@ -41,6 +41,12 @@
       <div class="form-group">
         <label for="is_active">IS Active</label>
         <input type="checkbox" class="form-control" name="is_active">
+      </div>
+
+    </div>
+      <div class="form-group">
+        <label for="is_almuni">IS Almuni</label>
+        <input type="checkbox" class="form-control" name="is_almuni">
       </div>
 
     </div>

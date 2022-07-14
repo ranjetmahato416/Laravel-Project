@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Student;
 
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class FacultyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //select * from student
-        $students = Student::all();
-        return view('student.index', compact('students'));
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create');
+        //
     }
 
     /**
@@ -37,31 +34,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $name = $request ->get('name');
-        $email = $request ->get('email');
-        $mobile = $request ->get('mobile');
-        $gender = $request ->get('gender');
-        $blood_group = $request ->get('blood_group');
-        $perm_address = $request ->get('perm_address');
-        $dob = $request ->get('dob');
-        $is_active = $request ->get('is_active');
-        $is_almuni = $request ->get('is_active');
-
-      
-            Student::create([
-                'name' =>$name,
-                'email' =>$email,
-                'mobile'=>$mobile,
-                'gender' =>$gender,
-                'dob' => $dob,
-                'blood_group'=>$blood_group,
-                'perm_address'=>$perm_address,
-                'is_active' => isset($is_active),
-                "is_almuni" =>isset($is_active)
-            ]);
-            return redirect()->route('student.index');
-       
+        //
     }
 
     /**
@@ -83,8 +56,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $student = Student::find($id);
-        
+        //
     }
 
     /**
@@ -107,6 +79,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $student = Student::find($id)->delete();
+        //
     }
 }
