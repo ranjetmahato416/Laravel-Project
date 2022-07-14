@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Faculty;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,9 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        //
+        $faculties = Faculty::all();
+        
+        return view('faculty.index', compact('faculties'));
     }
 
     /**
@@ -23,7 +26,7 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        //
+        return view('faculty.create');
     }
 
     /**
@@ -34,7 +37,11 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $faculty_name = $request->input('faculty_name');
+        Faculty::create([
+            'faculty_name' => $faculty_name
+        ]);
+        return redirect()->route('faculty.index');
     }
 
     /**
