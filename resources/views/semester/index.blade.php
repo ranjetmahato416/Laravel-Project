@@ -4,28 +4,28 @@
     <table class="table table-responsive">
         <thead>
             <th>ID</th>
-            <th>Faculty Name</th>
-            <th>Action</th>
+            <th>Semester</th>
+            <th>ACTION</th>
         </thead>
         <tbody>
-            @foreach($faculties as $f)
+            @foreach($semesters as $s)
             <tr>
                 <td>
-                    {{$f->id}}
+                    {{$s->id}}
                 </td>
                 <td>
-                    {{$f->faculty_name}}
+                    {{$s->name}}
                 </td>
                 <td>
-                    <a href="{{ route('faculty.edit', $f->id) }}">
+                    <a href="{{ route('semester.edit', $s->id) }}">
                         <button class="btn btn-warning">Edit</button>
                     </a>
                 </td>
                 <td>
-                    <form method="POST" action="{{ route('faculty.destroy', $f->id) }}">
+                    <form method="POST" action="{{ route('semester.destroy', $s->id) }}">
                         @method('DELETE')
                         @csrf
-                        <button class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
             </tr>

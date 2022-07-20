@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Faculty;
+use App\Semester;
 
 use Illuminate\Http\Request;
 
-class FacultyController extends Controller
+class SemesterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        
-        return view('faculty.index', compact('faculties'));
+        $semesters = Semester::all();
+        return view('semester.index', compact('semesters'));
     }
 
     /**
@@ -26,7 +25,7 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        return view('faculty.create');
+        return view('semester.create');
     }
 
     /**
@@ -37,12 +36,13 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
-     
-        $faculty_name = $request->get('faculty_name');
-        Faculty::create([
-            'faculty_name' => $faculty_name
+    
+        $name = $request->get('name');
+
+        Semester::create([
+            'name' => $name
         ]);
-        return redirect()->route('faculty.index');
+        return redirect()->route('semester.index');
     }
 
     /**
@@ -64,8 +64,9 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        $faculty = Faculty::find($id);
-        return view ('faculty.edit', compact('faculty'));
+        $semester = Semester::find($id);
+        return view ('semester.edit', compact('semester'));
+        
     }
 
     /**
@@ -77,12 +78,14 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $faculty = Faculty::find($id);
-        $faculty_name = $request->get('faculty_name');
-        $faculty['faculty_name'] = $faculty_name;
+        $semester = Semester::find($id);
 
-        $faculty->update();
-        return redirect()->route('faculty.index');
+        $name = $request->get('name');
+
+        $semester['name'] = $name;
+
+        $semester->update();
+        return redirect()->route('semester.index');
     }
 
     /**
@@ -93,8 +96,8 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        $faculty = Faculty::find($id);
-        $faculty->delete();
-        return redirect()->route('faculty.index');
+        $semester = Semester::find($id);
+        $semester->delete();
+        return redirect()->route('semester.index');
     }
 }

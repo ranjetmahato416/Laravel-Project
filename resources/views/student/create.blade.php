@@ -38,18 +38,6 @@
         <label for="dob">Date of Birth</label>
         <input type="dob" class="form-control" name="dob" placeholder="DOB">
       </div>
-      <div class="form-group">
-        <label for="is_active">IS Active</label>
-        <input type="checkbox" class="form-control" name="is_active">
-      </div>
-
-    </div>
-      <div class="form-group">
-        <label for="is_almuni">IS Almuni</label>
-        <input type="checkbox" class="form-control" name="is_almuni">
-      </div>
-
-    </div>
     <!-- /.card-body -->
 
     <div class="card-footer">

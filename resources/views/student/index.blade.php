@@ -1,4 +1,6 @@
-<table>
+@extends('welcome')
+@section('main_content')
+<table class="table table-responsive">
     <thead>
     <th>#</th>
     <th>Name</th>
@@ -8,8 +10,6 @@
     <th>Blood Group</th>
     <th>Address</th>
     <th>DOB</th>
-    <th>IS_Active</th>
-    <th>IS_Almuni</th>
     <th>Action</th>
     </thead>
     <tbody>
@@ -23,13 +23,20 @@
             <td>{{$s->blood_group}}</td>
             <td>{{$s->perm_address}}</td>
             <td>{{$s->dob}}</td>
-            <td>{{$s->is_active}}</td>
-            <td>{{$s->is_almuni}}</td>
             <td>
-                <a href="{{ route('student.edit',$s->id) }}" >Edit</a>
+                <a href="{{ route('student.edit',$s->id) }}" class="btn btn-warning">Edit</a>
+
+            </td>
+            <td>
+            <form method="POST" action=" {{ route('student.destroy', $s->id) }}">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </td>
         </tr>
         @endforeach
     </tbody>
 
 </table>
+@endsection

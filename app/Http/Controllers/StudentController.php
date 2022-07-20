@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Education_info;
 use App\Student;
 
 use Illuminate\Http\Request;
@@ -16,6 +18,18 @@ class StudentController extends Controller
     {
         //select * from student
         $students = Student::all();
+        foreach ($students as $student){
+            // $college_info = College_Info::where('student_id', $student_id)->get();
+            $education_info = Education_info::where('student_id', $student_id)->get();
+            // $parent_info = Parent_info:: where('student_id', $student_id)->get();
+
+            if(count($college_info)!=0){
+                $student['is_college_info'] =true;
+            }
+            else{
+                $student['is_college_info']=false;
+            }
+        }
         return view('student.index', compact('students'));
     }
 
@@ -45,8 +59,6 @@ class StudentController extends Controller
         $blood_group = $request ->get('blood_group');
         $perm_address = $request ->get('perm_address');
         $dob = $request ->get('dob');
-        $is_active = $request ->get('is_active');
-        $is_almuni = $request ->get('is_active');
 
       
             Student::create([
@@ -56,9 +68,7 @@ class StudentController extends Controller
                 'gender' =>$gender,
                 'dob' => $dob,
                 'blood_group'=>$blood_group,
-                'perm_address'=>$perm_address,
-                'is_active' => isset($is_active),
-                "is_almuni" =>isset($is_active)
+                'perm_address'=>$perm_address
             ]);
             return redirect()->route('student.index');
        
@@ -84,6 +94,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::find($id);
+        return view ('student.edit', compact('student'));
         
     }
 
@@ -96,7 +107,26 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+        $name = $request ->get('name');
+        $email = $request ->get('email');
+        $mobile = $request ->get('mobile');
+        $gender = $request ->get('gender');
+        $blood_group = $request ->get('blood_group');
+        $perm_address = $request ->get('perm_address');
+        $dob = $request ->get('dob');
+
+        $student['name'] = $name;
+        $student['email'] = $email;
+        $student['mobile'] = $mobile;
+        $student['gender'] = $gender;
+        $student['blood_group'] = $blood_group;
+        $student['perm_address'] = $perm_address;
+        $student['dob'] = $dob;
+
+        $student->update();
+        return redirect()->route('student.index');
+
     }
 
     /**
@@ -108,5 +138,6 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = Student::find($id)->delete();
+        return redirect()->route('student.index');
     }
 }

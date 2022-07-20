@@ -24,8 +24,6 @@ class CreateStudentsTable extends Migration
             $table->string('perm_address', 50);
             $table->date('dob');
             $table->string('gender');
-            $table->boolean('is_active');
-            $table->boolean('is_almuni');
             $table->timestamps();
         });
     }

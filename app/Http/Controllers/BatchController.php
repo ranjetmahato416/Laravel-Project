@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Faculty;
+use App\Batch;
 
 use Illuminate\Http\Request;
 
-class FacultyController extends Controller
+class BatchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        
-        return view('faculty.index', compact('faculties'));
+        $batches = Batch::all();
+        return view('batch.index', compact('batches'));
     }
 
     /**
@@ -26,7 +25,7 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        return view('faculty.create');
+        return view('batch.create');
     }
 
     /**
@@ -37,12 +36,11 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
-     
-        $faculty_name = $request->get('faculty_name');
-        Faculty::create([
-            'faculty_name' => $faculty_name
-        ]);
-        return redirect()->route('faculty.index');
+        $batch_year = $request->get('batch_year');
+        Batch::create([
+            'batch_year'=>$batch_year
+        ]); 
+        return redirect()->route('batch.index');
     }
 
     /**
@@ -64,8 +62,8 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        $faculty = Faculty::find($id);
-        return view ('faculty.edit', compact('faculty'));
+        $batch = Batch::find($id);
+        return view('batch.edit', compact('batch'));
     }
 
     /**
@@ -77,12 +75,12 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $faculty = Faculty::find($id);
-        $faculty_name = $request->get('faculty_name');
-        $faculty['faculty_name'] = $faculty_name;
+        $batch = Batch::find($id);
+        $batch_year = $request->get('batch_year');
+        $batch['batch_year'] = $batch_year;
 
-        $faculty->update();
-        return redirect()->route('faculty.index');
+        $batch->update();
+        return redirect()->route('batch.index');
     }
 
     /**
@@ -93,8 +91,8 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        $faculty = Faculty::find($id);
-        $faculty->delete();
-        return redirect()->route('faculty.index');
+        $batch = Batch::find($id);
+        $batch->delete();
+        return redirect()->route('batch.index');
     }
 }
