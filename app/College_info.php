@@ -9,8 +9,7 @@ class College_info extends Model
     protected $fillable = ([
         'faculty_id',
         'batch_id',
-        'semester_id',
-        'reg_no',
-        'student_id'
+        'student_id',
+        'reg_no'
     ]);
 }

@@ -112,6 +112,8 @@ class Education_infoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $education_info = Education_info::find($id);
+        $education_info->delete();
+        return redirect()->route('education_info.index');
     }
 }

@@ -9,8 +9,9 @@ class Education_info extends Model
     protected $fillable =([
         'board',
         'cgpa',
-        'sumbol_no',
+        'symbol_no',
         'institute_name',
+        'passed_year',
         'student_id'
     ]);
 }

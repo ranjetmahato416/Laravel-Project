@@ -16,8 +16,10 @@ Route::resource('batch','BatchController');
 
 Route::resource('semester','SemesterController');
 
-Route::resource('faculty','FacultyController');
+Route::resource('education_info','Education_infoController');
 
-Route::resource('bacth','BatchController');
+Route::resource('parent_info','Parent_infoController');
+
+Route::resource('college_info','College_infoController');
 
 

@@ -6,7 +6,8 @@
   </div>
   <!-- /.card-header -->
   <!-- form start -->
-  <form method="POST" action="{{ route('education_info.store')}}">
+  <form method="POST" action="{{ route('education_info.update')}}">
+    @method('PATCH')
     @csrf
     <div class="card-body">
 
@@ -16,23 +17,23 @@
       </div>
       <div class="form-group">
         <label for="bg">CGPA/Percentage</label>
-        <input type="text" class="form-control" name="cgpa" placeholder="CGPA">
+        <input type="text" class="form-control" name="cgpa" placeholder="Address">
       </div>
       <div class="form-group">
         <label for="board">Board</label>
-        <input type="text" class="form-control" name="board" placeholder="Board">
+        <input type="email" class="form-control" name="board" placeholder="Board">
       </div>
       <div class="form-group">
         <label for="mobile">Symbol No</label>
-        <input type="text" class="form-control" name="symbol_no" placeholder="Symbol Number">
+        <input type="num" class="form-control" name="symbol_no" placeholder="Mobile Number">
       </div>
       <div class="form-group">
         <label for="gender">Passed Year</label>
-        <input type="gender" class="form-control" name="passed_year" placeholder="Passed Year">
+        <input type="gender" class="form-control" name="passed_year" placeholder="Gender">
       </div>
       <div class="form-group">
         <label for="bg">Institute Name</label>
-        <input type="text" class="form-control" name="institute_name" placeholder="Institute Name">
+        <input type="text" class="form-control" name="institute_name" placeholder="Blood Group">
       </div>
    
     <!-- /.card-body -->
