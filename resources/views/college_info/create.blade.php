@@ -23,7 +23,7 @@
         <input type="name" class="form-control" name="student_id">
       </div>
       <div class="form-group">
-        <label for="name">Semester ID ID</label>
+        <label for="name">Semester ID</label>
         <input type="name" class="form-control" name="semester_id">
       </div>
       <div class="form-group">

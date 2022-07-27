@@ -25,22 +25,41 @@
                 <table class="table table-responsive">
                     <tr>
                         <td><strong>College Info</strong></td>
-                        <td>
                         @if($s->is_college_info)
-                Edit | Delete
-                @else
-                Create
-                @endif
+                        <td>
+                        <a href="{{ route('college_info.edit',$s->id) }}" class="btn btn-warning">Edit</a>
                         </td>
+                        <td>
+                        <form method="POST" action=" {{ route('college_info.destroy', $s->id) }}">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                @else
+                <td>
+                    <a href="{{ route('college_info.create',$s->id) }}" class="btn btn-warning">Create</a>
+                </td>
+                @endif
                     </tr>
 
                     <tr>
                         <td><strong>Education Info</strong></td>
-                        <td>
                         @if($s->is_education_info)
-                Edit | Delete
+                        <td>
+                            <a href="{{ route('education_info.edit',$s->id) }}" class="btn btn-warning">Edit</a>
+                        </td>
+                        <td>
+                        <form method="POST" action=" {{ route('education_info.destroy', $s->id) }}">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 @else
-                Create
+                <td>
+                    <a href="{{ route('education_info.create',$s->id) }}" class="btn btn-warning">Create</a>
+                </td>
                 @endif
                         </td>
                     </tr>

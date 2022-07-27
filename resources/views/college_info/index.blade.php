@@ -17,7 +17,7 @@
             <td>{{$c->faculty_id}}</td>
             <td>{{$c->batch_id}}</td>
             <td>{{$c->student_id}}</td>
-            <td>{{$c->$semester_id}}</td>
+            <td>{{$c->semester_id}}</td>
             <td>{{$c->reg_no}}</td>
             <td>
                 <a href="{{ route('college_info.edit',$c->id) }}" class="btn btn-warning">Edit</a>
