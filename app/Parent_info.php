@@ -8,6 +8,7 @@ class Parent_info extends Model
 {
     protected $fillable = ([
         'father',
-        'mother'
+        'mother',
+        'student_id'
     ]);
 }

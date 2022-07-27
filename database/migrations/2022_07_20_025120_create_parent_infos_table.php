@@ -17,6 +17,8 @@ class CreateParentInfosTable extends Migration
             $table->bigIncrements('id');
             $table->string('father');
             $table->string('mother');
+            $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete("CASCADE");
             $table->timestamps();
         });
     }

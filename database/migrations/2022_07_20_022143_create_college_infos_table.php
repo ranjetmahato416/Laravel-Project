@@ -18,12 +18,14 @@ class CreateCollegeInfosTable extends Migration
             $table->unsignedBigInteger('faculty_id');
             $table->unsignedBigInteger('batch_id');
             $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('semester_id');
             $table->string('reg_no');
             $table->timestamps();
 
             $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('CASCADE');
             $table->foreign('batch_id')->references('id')->on('batches')->onDelete('CASCADE');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('CASCADE');
+            $table->foreign('semester_id')->references('id')->on('semesters')->onDelete('CASCADE');
         });
     }
 

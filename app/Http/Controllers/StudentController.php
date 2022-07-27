@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Education_info;
+use App\College_info;
+use App\Parent_info;
 use App\Student;
-
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class StudentController extends Controller
 {
@@ -18,18 +22,28 @@ class StudentController extends Controller
     {
         //select * from student
         $students = Student::all();
+       
         foreach ($students as $student){
-            // $college_info = College_Info::where('student_id', $student_id)->get();
-            $education_info = Education_info::where('student_id', $student_id)->get();
-            // $parent_info = Parent_info:: where('student_id', $student_id)->get();
+           
+            $college_info = College_info::where('student_id',$student->id)->get();
+            $education_info = Education_info::where('student_id', $student->id)->get();
+            $parent_info = Parent_info:: where('student_id', $student->id)->get();
 
-            if(count($college_info)!=0){
-                $student['is_college_info'] =true;
+            if(count($college_info) == 0){
+                $student['is_college_info'] = false;
             }
             else{
-                $student['is_college_info']=false;
+                $student['is_college_info']=true;
+            }
+
+            if(count($education_info) == 0){
+                $student['is_education_info'] = false;
+            }
+            else{
+                $student['is_education_info']=true;
             }
         }
+       
         return view('student.index', compact('students'));
     }
 
@@ -59,8 +73,9 @@ class StudentController extends Controller
         $blood_group = $request ->get('blood_group');
         $perm_address = $request ->get('perm_address');
         $dob = $request ->get('dob');
+        try
+        {
 
-      
             Student::create([
                 'name' =>$name,
                 'email' =>$email,
@@ -71,6 +86,14 @@ class StudentController extends Controller
                 'perm_address'=>$perm_address
             ]);
             return redirect()->route('student.index');
+        }
+        catch(Throwable $ex)
+        {
+            return view($ex);
+            
+        }
+
+      
        
     }
 

@@ -23,6 +23,10 @@
         <input type="name" class="form-control" name="student_id">
       </div>
       <div class="form-group">
+        <label for="name">Semester ID ID</label>
+        <input type="name" class="form-control" name="semester_id">
+      </div>
+      <div class="form-group">
         <label for="name">Registration Number</label>
         <input type="name" class="form-control" name="reg_no">
       </div>

@@ -4,6 +4,11 @@
     <form method="POST" action="{{ route('parent_info.store')}}">
         @csrf
         <div class="form-group">
+        <label for="student_id">Student ID
+            <input type="text" class="form-control" name="student_id" placeholder="Enter ID">
+        </label>
+        </div>
+        <div class="form-group">
         <label for="father">Father's Name
             <input type="text" class="form-control" name="father" placeholder="Father's Name">
         </label>

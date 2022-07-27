@@ -41,12 +41,14 @@ class College_infoController extends Controller
         $faculty_id = $request->get('faculty_id');
         $batch_id = $request->get('batch_id');
         $student_id = $request->get('student_id');
+        $semester_id = $request->get('semester_id');
         $reg_no = $request->get('reg_no');
 
         College_info:: create([
             'faculty_id'=> $faculty_id,
             'batch_id'=> $batch_id,
             'student_id'=> $student_id,
+            'semester_id'=>$semester_id,
             'reg_no'=> $reg_no
         ]);
         return redirect()->route('college_info.index');
@@ -91,6 +93,8 @@ class College_infoController extends Controller
         $college_info['batch_id'] = $batch_id;
         $student_id = $request->get('student_id');
         $college_info['student_id'] = $student_id;
+        $semester_id = $request->get('semester_id');
+        $college_info['semester_id'] = $semester_id;
         $reg_no = $request->get('reg_no');
         $college_info['reg_no'] = $reg_no;
 

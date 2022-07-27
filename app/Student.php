@@ -15,7 +15,8 @@ class Student extends Model
         'temp_address',
         'perm_address',
         'dob',
-        'gender'
+        'gender',
+        'parent_id'
 
     ];
 }

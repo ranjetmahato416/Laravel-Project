@@ -10,6 +10,7 @@ class College_info extends Model
         'faculty_id',
         'batch_id',
         'student_id',
+        'semester_id',
         'reg_no'
     ]);
 }

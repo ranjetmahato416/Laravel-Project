@@ -38,9 +38,11 @@ class Parent_infoController extends Controller
     {
         $father = $request->get('father');
         $mother = $request->get('mother');
+        $student_id = $request->get('student_id');
         Parent_info:: create([
             'father' => $father,
-            'mother' => $mother
+            'mother' => $mother,
+            'student_id' => $student_id
         ]);
         return redirect()->route('parent_info.index');
     }
@@ -82,6 +84,8 @@ class Parent_infoController extends Controller
         $parent_info['father'] = $father;
         $mother = $request->get('mother');
         $parent_info['mother'] = $mother;
+        $student_id = $request->get('student_id');
+        $parent_info['student_id'] = $student_id;
 
         $parent_info->update();
         return redirect()->route('parent_info.index');

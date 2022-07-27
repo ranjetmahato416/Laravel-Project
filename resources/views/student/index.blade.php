@@ -1,15 +1,15 @@
 @extends('welcome')
 @section('main_content')
-<table class="table table-responsive">
+<div class="row">
+    <div class="col-md-12">
+    <table class="table table-responsive">
     <thead>
     <th>#</th>
     <th>Name</th>
     <th>Email</th>
     <th>Mobile</th>
     <th>Gender</th>
-    <th>Blood Group</th>
-    <th>Address</th>
-    <th>DOB</th>
+    <th>Information</th>
     <th>Action</th>
     </thead>
     <tbody>
@@ -20,9 +20,34 @@
             <td>{{$s->email}}</td>
             <td>{{$s->mobile}}</td>
             <td>{{$s->gender}}</td>
-            <td>{{$s->blood_group}}</td>
-            <td>{{$s->perm_address}}</td>
-            <td>{{$s->dob}}</td>
+            <td>
+
+                <table class="table table-responsive">
+                    <tr>
+                        <td><strong>College Info</strong></td>
+                        <td>
+                        @if($s->is_college_info)
+                Edit | Delete
+                @else
+                Create
+                @endif
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Education Info</strong></td>
+                        <td>
+                        @if($s->is_education_info)
+                Edit | Delete
+                @else
+                Create
+                @endif
+                        </td>
+                    </tr>
+                </table>
+              
+
+            </td>
             <td>
                 <a href="{{ route('student.edit',$s->id) }}" class="btn btn-warning">Edit</a>
 
@@ -39,4 +64,7 @@
     </tbody>
 
 </table>
+    </div>
+</div>
+
 @endsection

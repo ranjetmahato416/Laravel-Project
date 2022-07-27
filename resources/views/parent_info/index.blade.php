@@ -3,6 +3,7 @@
 <table class="table table-responsive">
     <thead>
     <th>#</th>
+    <th>Student ID</th>
     <th>Father's Name</th>
     <th>Mother's Name</th>
     <th>Action</th>
@@ -11,6 +12,7 @@
         @foreach($parent_infos as $p)
         <tr>
             <td>{{$p->id}}</td>
+            <td>{{$p->student_id}}</td>
             <td>{{$p->father}}</td>
             <td>{{$p->mother}}</td>
             <td>
